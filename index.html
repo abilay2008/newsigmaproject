@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Сигма Поисковик</title>
+    <title>Сигма Макс Про Ультра Гипер Легендарный Поисковик</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css">
     <script defer src="https://pyscript.net/releases/2023.11.1/core.js"></script>
     <style>
@@ -25,90 +25,4 @@
             border: 2px solid #f8d7e9;
             border-radius: 10px;
             background-color: #fffafa;
-            font-size: 16px;
-            margin-bottom: 15px;
-            white-space: pre-wrap;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #f8d7e9;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        button {
-            background-color: #ff99cc;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #ff66aa;
-        }
-
-        pre {
-            background-color: #fff0f5;
-            border: 1px solid #f0c0d0;
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 15px;
-            white-space: pre-wrap;
-        }
-    </style>
-</head>
-<body>
-
-<h1>Сигма Макс Про Ультра Гипер Легендарный Поисковик</h1>
-
-<div id="text-display"></div>
-
-<input type="text" id="search-word" placeholder="Введите слово для поиска...">
-<button py-click="search_word">Поиск</button>
-
-<h3>Результат:</h3>
-<pre id="output">...</pre>
-
-<py-script>
-from pyscript import Element
-
-sample_text = """
-This is a Python project about text.
-Another project written in python but has some error.
-Random line with no keyword.
-python project without error!
-Welcome to the Python-based search app.
-"""
-
-# Отображаем sample_text при загрузке
-Element("text-display").write(sample_text.strip())
-
-def search_word(*args):
-    keyword = Element("search-word").element.value.strip().lower()
-    lines = sample_text.strip().splitlines()
-
-    if not keyword:
-        Element("output").write("Пожалуйста, введите слово для поиска.")
-        return
-
-    found = []
-    for i, line in enumerate(lines, 1):
-        if keyword in line.lower():
-            found.append(f"Строка {i}: {line.strip()}")
-
-    if found:
-        result = f"Найдено {len(found)} вхождений слова «{keyword}»:\n\n" + "\n".join(found)
-    else:
-        result = f"Слово «{keyword}» не найдено."
-
-    Element("output").write(result)
-</py-script>
-
-</body>
-</html>
+            font-size:

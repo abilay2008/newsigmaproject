@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>sigma search engine</title>
+    <title>Сигма Поисковик</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css">
     <script defer src="https://pyscript.net/releases/2023.11.1/core.js"></script>
     <style>
@@ -18,16 +18,16 @@
             text-align: center;
         }
 
-        textarea {
+        #text-display {
             width: 100%;
-            height: 200px;
+            min-height: 200px;
             padding: 15px;
             border: 2px solid #f8d7e9;
             border-radius: 10px;
             background-color: #fffafa;
             font-size: 16px;
             margin-bottom: 15px;
-            resize: none;
+            white-space: pre-wrap;
         }
 
         input[type="text"] {
@@ -65,16 +65,50 @@
 </head>
 <body>
 
-<h1>sigma search engine</h1>
+<h1>Сигма Макс Про Ультра Гипер Легендарный Поисковик</h1>
 
-<textarea id="input-text" readonly></textarea>
+<div id="text-display"></div>
+
 <input type="text" id="search-word" placeholder="Введите слово для поиска...">
 <button py-click="search_word">Поиск</button>
 
 <h3>Результат:</h3>
 <pre id="output">...</pre>
 
-<py-script src="script.py"></py-script>
+<py-script>
+from pyscript import Element
+
+sample_text = """
+This is a Python project about text.
+Another project written in python but has some error.
+Random line with no keyword.
+python project without error!
+Welcome to the Python-based search app.
+"""
+
+# Отображаем sample_text при загрузке
+Element("text-display").write(sample_text.strip())
+
+def search_word(*args):
+    keyword = Element("search-word").element.value.strip().lower()
+    lines = sample_text.strip().splitlines()
+
+    if not keyword:
+        Element("output").write("Пожалуйста, введите слово для поиска.")
+        return
+
+    found = []
+    for i, line in enumerate(lines, 1):
+        if keyword in line.lower():
+            found.append(f"Строка {i}: {line.strip()}")
+
+    if found:
+        result = f"Найдено {len(found)} вхождений слова «{keyword}»:\n\n" + "\n".join(found)
+    else:
+        result = f"Слово «{keyword}» не найдено."
+
+    Element("output").write(result)
+</py-script>
 
 </body>
 </html>
